@@ -19,20 +19,17 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             Container(
               padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
-              decoration: BoxDecoration(color: Colors.grey[700]),
-              child: Hero(
-                tag: "SearchHero",
-                child: TextField(
-                  decoration: InputDecoration(
-                    focusColor: Colors.white,
-                    hoverColor: Colors.white,
-                    fillColor: Colors.white,
-                    prefixIcon: Icon(Icons.search),
-                    border: InputBorder.none,
-                    labelText: "Search App",
-                  ),
-                  //controller: controller,
+              decoration: BoxDecoration(color: Colors.grey[800]),
+              child: TextField(
+                decoration: InputDecoration(
+                  focusColor: Colors.white,
+                  hoverColor: Colors.white,
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.search),
+                  border: InputBorder.none,
+                  labelText: "Search App",
                 ),
+                //controller: controller,
               ),
             ),
           ],

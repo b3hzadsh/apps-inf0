@@ -32,10 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     tag: "CatHero",
                     child: MainButton(
                         width: width, hieght: hieght, title: "category")),
-                Hero(
-                    tag: "SearchHero",
-                    child: MainButton(
-                        width: width, hieght: hieght, title: "search")),
+                MainButton(width: width, hieght: hieght, title: "search"),
                 MainButton(width: width, hieght: hieght, title: "setting"),
                 MainButton(width: width, hieght: hieght, title: "about"),
               ],
