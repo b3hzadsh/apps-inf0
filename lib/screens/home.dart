@@ -15,35 +15,36 @@ class _MyHomePageState extends State<MyHomePage> {
     var hieght = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.blueGrey[300],
       /* appBar: AppBar(
         title: Text(widget.title),
       ), */
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            padding: EdgeInsets.all(4 / 100 * width),
-            // margin:EdgeInsets.all(4 / 100 * width),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Wrap(
+              runSpacing: 3 / 100 * hieght,
+              spacing: 3 / 100 * width,
+              direction: Axis.horizontal,
               children: [
-                Wrap(
-                  runSpacing: 3 / 100 * hieght,
-                  spacing: 5 / 100 * width,
-                  direction: Axis.horizontal,
-                  children: [
-                    MainButton(width: width, hieght: hieght, title: "category"),
-                    MainButton(width: width, hieght: hieght, title: "search"),
-                    MainButton(width: width, hieght: hieght, title: "setting"),
-                    MainButton(width: width, hieght: hieght, title: "about"),
-                  ],
-                ),
-                SizedBox(
-                  height: 4 / 100 * width,
-                ),
-                MainButton(width: width, hieght: hieght, title: "exit"),
+                Hero(
+                    tag: "CatHero",
+                    child: MainButton(
+                        width: width, hieght: hieght, title: "category")),
+                Hero(
+                    tag: "SearchHero",
+                    child: MainButton(
+                        width: width, hieght: hieght, title: "search")),
+                MainButton(width: width, hieght: hieght, title: "setting"),
+                MainButton(width: width, hieght: hieght, title: "about"),
               ],
             ),
-          ),
+            SizedBox(
+              height: 4 / 100 * width,
+            ),
+            MainButton(width: width, hieght: hieght, title: "exit"),
+          ],
         ),
       ),
     );

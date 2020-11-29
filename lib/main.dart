@@ -1,3 +1,4 @@
+import 'package:apps_info/screens/category.dart';
 import 'package:apps_info/screens/home.dart';
 import 'package:apps_info/screens/search.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +30,12 @@ class MyApp extends StatelessWidget {
             builder: (context) => SearchScreen(),
             // bring choosing cat screen to user
           );
-        /*
-        if (setting.name == "/screen/home") // for home
+
+        if (setting.name == "/screen/category") // for home
           return MaterialPageRoute(
-            builder: (context) => Home(),
+            builder: (context) => CategoryScreen(),
             // bring home
-          ); */
+          );
       },
     );
   }
