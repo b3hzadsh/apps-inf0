@@ -9,7 +9,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey[300],
+      //  backgroundColor: Colors.blueGrey[300],
       /* appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.white,
@@ -18,20 +18,29 @@ class _SearchScreenState extends State<SearchScreen> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
-              decoration: BoxDecoration(color: Colors.grey[800]),
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(15),
+                ),
+              ),
+              //padding: EdgeInsets.fromLTRB(10, 2, 10, 0),
+
               child: TextField(
+                style: TextStyle(fontSize: 22),
                 decoration: InputDecoration(
-                  focusColor: Colors.white,
-                  hoverColor: Colors.white,
-                  fillColor: Colors.white,
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    size: 35,
+                  ),
                   border: InputBorder.none,
-                  labelText: "Search App",
+                  //labelText: "Search App",
+                  hintText: "App Name",
                 ),
                 //controller: controller,
               ),
             ),
+            //Divider()
           ],
         ),
       ),

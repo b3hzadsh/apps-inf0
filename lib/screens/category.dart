@@ -25,7 +25,7 @@ class CategoryScreen extends StatelessWidget {
       "SPORTS",
     ];
     return Scaffold(
-      backgroundColor: Colors.blueGrey[300],
+      // backgroundColor: Colors.blueGrey[300],
       appBar: AppBar(
         elevation: 0.0,
         title: Hero(
@@ -33,29 +33,36 @@ class CategoryScreen extends StatelessWidget {
           tag: "CatHero",
         ),
       ),
-      body: ListView(
-        children: List<Widget>.generate(
-          cats.length,
-          (index) => Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: 1 / 100 * hieght, bottom: 1 / 100 * hieght),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: ListView(
+          children: List<Widget>.generate(
+            cats.length,
+            (index) => GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, "/cat/${cats[index]}");
+              },
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, "/cat/${cats[index]}");
+                },
+                child: Center(
                   child: Column(
                     children: [
-                      Text(
-                        cats[index],
-                        style: TextStyle(color: Colors.grey[800], fontSize: 20),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 3),
+                        child: Text(
+                          cats[index],
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 20),
+                        ),
                       ),
                       Divider(),
                     ],
                   ),
                 ),
               ),
-            ],
+            ),
           ),
         ),
       ),

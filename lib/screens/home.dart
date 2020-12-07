@@ -15,32 +15,89 @@ class _MyHomePageState extends State<MyHomePage> {
     var hieght = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.blueGrey[300],
+      // backgroundColor: Colors.blueGrey[300],
       /* appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("widget.title"),
       ), */
-      body: Center(
+      body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Wrap(
-              runSpacing: 3 / 100 * hieght,
-              spacing: 3 / 100 * width,
-              direction: Axis.horizontal,
-              children: [
-                Hero(
+            Container(
+              alignment: Alignment.center,
+              width: double.infinity,
+              height: hieght / 5,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(20),
+                ),
+              ),
+              child: Wrap(
+                children: [
+                  Hero(
                     tag: "CatHero",
                     child: MainButton(
-                        width: width, hieght: hieght, title: "category")),
-                MainButton(width: width, hieght: hieght, title: "search"),
-                MainButton(width: width, hieght: hieght, title: "setting"),
-                MainButton(width: width, hieght: hieght, title: "about"),
-              ],
+                        width: width,
+                        hieght: hieght,
+                        title: "category",
+                        icon: Icons.category),
+                  ),
+                  MainButton(
+                      width: width,
+                      hieght: hieght,
+                      title: "favorites",
+                      icon: Icons.favorite),
+                ],
+              ),
             ),
-            SizedBox(
-              height: 4 / 100 * width,
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(20),
+                ),
+              ),
+              child: Column(
+                /* runSpacing: 3 / 100 * hieght,
+                spacing: 3 / 100 * width,
+                direction: Axis.horizontal, */
+                children: [
+                  MainButton(
+                      width: width,
+                      hieght: hieght,
+                      title: "search",
+                      icon: Icons.search),
+                  MainButton(
+                      width: width,
+                      hieght: hieght,
+                      title: "setting",
+                      icon: Icons.settings),
+                  MainButton(
+                      width: width,
+                      hieght: hieght,
+                      title: "about",
+                      icon: Icons.info),
+                  MainButton(
+                      width: width,
+                      hieght: hieght,
+                      title: "exit",
+                      icon: Icons.exit_to_app),
+                ],
+              ),
             ),
-            MainButton(width: width, hieght: hieght, title: "exit"),
+            Container(
+              alignment: Alignment.bottomLeft,
+              width: double.infinity,
+              height: hieght / 5,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -54,36 +111,46 @@ class MainButton extends StatelessWidget {
     @required this.width,
     @required this.hieght,
     @required this.title,
+    @required this.icon,
   }) : super(key: key);
 
   final double width;
   final double hieght;
   final String title;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(width / 30),
-      child: Container(
-        height: hieght / 4,
-        width: width / 2.5,
-        /* decoration: BoxDecoration(
-
-            // borderRadius: BorderRadius.circular(width / 30),
-            ), */
-        child: Center(
-          child: RaisedButton(
-            color: Colors.blue,
-            onPressed: () {
-              Navigator.pushNamed(context, "/screen/$title");
-            },
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
+    return Container(
+      height: hieght / 8,
+      width: width / 2.5,
+      child: Center(
+        child: FlatButton(
+          onPressed: () {
+            Navigator.pushNamed(context, "/screen/$title");
+          },
+          child: Container(
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Icon(
+                    icon,
+                    size: 25,
+                    color: Theme.of(context).textTheme.headline1.color,
+                  )
+                ],
               ),
             ),
+            height: hieght / 8,
+            width: width / 2.5,
           ),
         ),
       ),
