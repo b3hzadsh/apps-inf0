@@ -51,10 +51,19 @@ class CategoryScreen extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 3),
-                        child: Text(
-                          cats[index],
-                          style:
-                              TextStyle(color: Colors.grey[800], fontSize: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Text(
+                                cats[index],
+                                style: TextStyle(
+                                    color: Colors.grey[800], fontSize: 20),
+                              ),
+                            ),
+                            Icon(Icons.arrow_forward_ios)
+                          ],
                         ),
                       ),
                       Divider(),

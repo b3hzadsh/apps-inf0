@@ -2,6 +2,7 @@ import 'package:apps_info/screens/art_cat_screen.dart';
 import 'package:apps_info/screens/category.dart';
 import 'package:apps_info/screens/home.dart';
 import 'package:apps_info/screens/search.dart';
+import 'package:apps_info/screens/setting_screen.dart';
 import 'package:apps_info/screens/the_home.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +38,11 @@ class MyApp extends StatelessWidget {
         if (setting.name == "/cat/ART AND DESIGN") // for home
           return MaterialPageRoute(
             builder: (context) => ArtScreen(),
+            // bring home
+          );
+        if (setting.name == "/screen/setting") // for home
+          return MaterialPageRoute(
+            builder: (context) => SettingScreen(),
             // bring home
           );
       },
