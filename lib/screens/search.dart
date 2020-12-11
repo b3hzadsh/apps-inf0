@@ -1,3 +1,4 @@
+import 'package:apps_info/utils/widgets.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -15,35 +16,37 @@ class _SearchScreenState extends State<SearchScreen> {
         backgroundColor: Colors.white,
       ), */
       body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(15),
-                ),
-              ),
-              //padding: EdgeInsets.fromLTRB(10, 2, 10, 0),
-
-              child: TextField(
-                style: TextStyle(fontSize: 22),
-                decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.search,
-                    size: 35,
+          bottom: false,
+          child: MyBlurBg(
+            child: Column(
+              children: [
+                Container(
+                  // alignment: Alignment.topCenter,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(15),
+                    ),
                   ),
-                  border: InputBorder.none,
-                  //labelText: "Search App",
-                  hintText: "App Name",
+                  //padding: EdgeInsets.fromLTRB(10, 2, 10, 0),
+
+                  child: TextField(
+                    style: TextStyle(fontSize: 22),
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.search,
+                        size: 35,
+                      ),
+                      border: InputBorder.none,
+                      //labelText: "Search App",
+                      hintText: "App Name",
+                    ),
+                    //controller: controller,
+                  ),
                 ),
-                //controller: controller,
-              ),
+              ],
             ),
-            //Divider()
-          ],
-        ),
-      ),
+          )),
     );
   }
 }

@@ -1,21 +1,58 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
+
+class MyBlurBg extends StatelessWidget {
+  final Widget child;
+  MyBlurBg({this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    var hieght = MediaQuery.of(context).size.height;
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(
+          // width: double.infinity,
+          //width: double.infinity,
+          child: Image.asset(
+            "assets/images/wolf.jpg",
+            //fit: BoxFit.fill,
+          ),
+        ),
+        BackdropFilter(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.grey.shade500.withOpacity(0.25),
+            ), /* 
+            width: double.infinity,
+            height: hieght * 1.1, */
+            //height: hieght,
+          ),
+          filter: ui.ImageFilter.blur(
+            sigmaX: 8.0,
+            sigmaY: 8.0,
+          ),
+        ),
+        child,
+      ],
+    );
+  }
+}
 
 class MainButton extends StatelessWidget {
   const MainButton({
     Key key,
-    @required this.width,
-    @required this.hieght,
     @required this.title,
     @required this.icon,
   }) : super(key: key);
 
-  final double width;
-  final double hieght;
   final String title;
   final IconData icon;
 
   @override
   Widget build(BuildContext context) {
+    final hieght = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
