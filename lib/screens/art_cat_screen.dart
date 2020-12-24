@@ -1,3 +1,4 @@
+import 'package:apps_info/models/app_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,10 +17,21 @@ class _ArtScreenState extends State<ArtScreen> {
       body: SafeArea(
         child: ListView.builder(
           // wrap with future builder
-          // itemCount: ,
+          itemCount: 1,
           itemBuilder: (BuildContext context, int index) {
+            AppModel theApp = new AppModel(
+                review: 3,
+                verNumber: "0.1.0",
+                appName: "kelid khabar",
+                ratting: 4.6,
+                price: "free",
+                downloads: "10+",
+                size: "5 MB");
             return Column(
-              children: [AppWidget(), Divider()],
+              children: [
+                AppWidget(app: theApp),
+                Divider(),
+              ],
             );
           },
         ),
@@ -30,19 +42,11 @@ class _ArtScreenState extends State<ArtScreen> {
 
 class AppWidget extends StatelessWidget {
   //add require to vars
-  final String appName;
-  final String verNumber;
-  final String size;
-  final String downloads;
-  final double ratting;
-  final String price;
+
+  final AppModel app;
+
   const AppWidget({
-    this.appName,
-    this.verNumber,
-    this.size,
-    this.downloads,
-    this.ratting,
-    this.price,
+    @required this.app,
     Key key,
   }) : super(key: key);
 
@@ -59,52 +63,133 @@ class AppWidget extends StatelessWidget {
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            "App name",
-            style: GoogleFonts.lato(
-              fontWeight: FontWeight.w900,
-            ),
+            app.appName,
+
             //size big with factor
           ),
           Divider(
             color: Colors.transparent,
           ),
 
-          Text(
-            "Version number",
+          /*  Text(
+            "version : ${app.verNumber}",
             style: GoogleFonts.lato(
               fontWeight: FontWeight.w300,
             ),
           ),
           Text(
-            "Size",
+            "size : ${app.size}",
             style: GoogleFonts.lato(
               fontWeight: FontWeight.w300,
             ),
-          ),
+          ), */
 
           //size big with factor
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Downloads",
-                style: GoogleFonts.lato(
-                  fontWeight: FontWeight.w400,
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  height: oneP * 15,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "${app.ratting}",
+                          ),
+                          SizedBox(
+                            width: oneP,
+                          ),
+                          Icon(
+                            Icons.star_rate,
+                            color: Colors.orangeAccent,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: oneP,
+                      ),
+                      Text(
+                        "${app.review} review", //TODO review var in app model
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("ratting"),
-                  Icon(
-                    Icons.star,
-                    size: 20, // responsive size
-                    color: Colors.grey,
-                  )
-                ],
-              )
-            ],
+                VerticalDivider(
+                  color: Colors.white,
+                ),
+                Container(
+                  width: oneP * 18,
+                  height: oneP * 15,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(Icons.download_rounded),
+                      SizedBox(
+                        height: oneP,
+                      ),
+                      Text(
+                        "${app.size}",
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: oneP * 2,
+                  child: VerticalDivider(
+                    color: Colors.white,
+                  ),
+                ),
+                Container(
+                  width: oneP * 12,
+                  height: oneP * 15,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.android_outlined,
+                        color: Colors.green,
+                      ),
+                      SizedBox(
+                        height: oneP,
+                      ),
+                      Text(
+                        "${app.verNumber}",
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: oneP * 2,
+                ),
+                Container(
+                  width: oneP * 19,
+                  height: oneP * 15,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "${app.downloads}",
+                      ),
+                      SizedBox(
+                        height: oneP,
+                      ),
+                      Text(
+                        "Downloads",
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: oneP * 7,
+                ),
+              ],
+            ),
           ),
         ],
       ),

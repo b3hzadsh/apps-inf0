@@ -22,15 +22,15 @@ class MyBlurBg extends StatelessWidget {
         BackdropFilter(
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.grey.shade500.withOpacity(0.25),
+              color: Colors.grey.shade500.withOpacity(0.20),
             ), /* 
             width: double.infinity,
             height: hieght * 1.1, */
             //height: hieght,
           ),
           filter: ui.ImageFilter.blur(
-            sigmaX: 8.0,
-            sigmaY: 8.0,
+            sigmaX: 5.0,
+            sigmaY: 5.0,
           ),
         ),
         child,
@@ -99,9 +99,10 @@ class MainButton extends StatelessWidget {
                   Text(
                     title,
                     style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xff031926)),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff031926),
+                    ),
                   ),
                   Icon(icon, size: 25, color: Color(0xff031926))
                 ],
