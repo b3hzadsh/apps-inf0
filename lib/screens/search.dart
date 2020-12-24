@@ -39,7 +39,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                       border: InputBorder.none,
                       //labelText: "Search App",
-                      hintText: "App Name",
+                      hintText: "App Name ❤️❤",
                     ),
                     //controller: controller,
                   ),

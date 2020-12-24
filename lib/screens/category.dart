@@ -45,33 +45,28 @@ class CategoryScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamed(context, "/cat/${cats[index]}");
                 },
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, "/cat/${cats[index]}");
-                  },
-                  child: Center(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 3),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Text(
-                                  cats[index],
-                                  style: TextStyle(
-                                      color: Colors.grey[200], fontSize: 20),
-                                ),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Text(
+                                cats[index],
+                                style: TextStyle(
+                                    color: Colors.grey[200], fontSize: 20),
                               ),
-                              Icon(Icons.arrow_forward_ios)
-                            ],
-                          ),
+                            ),
+                            Icon(Icons.arrow_forward_ios)
+                          ],
                         ),
-                        Divider(),
-                      ],
-                    ),
+                      ),
+                      Divider(),
+                    ],
                   ),
                 ),
               ),
