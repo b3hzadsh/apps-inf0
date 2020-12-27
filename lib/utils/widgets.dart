@@ -1,3 +1,5 @@
+import 'package:apps_info/models/app_model.dart';
+import 'package:apps_info/utils/func.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
@@ -42,12 +44,16 @@ class MyBlurBg extends StatelessWidget {
 class MainButton extends StatelessWidget {
   const MainButton({
     Key key,
+    this.myfunc,
+    this.needRout,
     @required this.title,
     @required this.icon,
   }) : super(key: key);
 
   final String title;
   final IconData icon;
+  final Function myfunc;
+  final bool needRout;
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +95,10 @@ class MainButton extends StatelessWidget {
         child: Center(
           child: FlatButton(
             onPressed: () {
-              Navigator.pushNamed(context, "/screen/$title");
+              if (needRout != false)
+                Navigator.pushNamed(context, "/screen/$title");
+
+              myfunc();
             },
             child: Container(
               width: double.infinity,
@@ -112,6 +121,165 @@ class MainButton extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class AppWidget extends StatelessWidget {
+  //add require to vars
+
+  final AppModel app;
+
+  const AppWidget({
+    @required this.app,
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // var hieght = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    var oneP = width / 100;
+    return Container(
+      // margin: EdgeInsets.all(10),
+      padding: EdgeInsets.fromLTRB(oneP * 5, oneP * 3, oneP * 5, 1),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            "${app.appName}",
+            style: TextStyle(color: Colors.orange),
+
+            //size big with factor
+          ),
+          Divider(
+            color: Colors.transparent,
+          ),
+
+          /*  Text(
+            "version : ${app.verNumber}",
+            style: GoogleFonts.lato(
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+          Text(
+            "size : ${app.size}",
+            style: GoogleFonts.lato(
+              fontWeight: FontWeight.w300,
+            ),
+          ), */
+
+          //size big with factor
+
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  height: oneP * 25,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "${app.ratting}",
+                          ),
+                          SizedBox(
+                            width: oneP,
+                          ),
+                          Icon(
+                            Icons.star_rate,
+                            color: Colors.yellow,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: oneP,
+                      ),
+                      Text(
+                        "${sumrize(app.review)}" +
+                            " review", //TODO review var in app model
+                      )
+                    ],
+                  ),
+                ),
+                VerticalDivider(
+                  color: Colors.white,
+                ),
+                Container(
+                  width: oneP * 18,
+                  height: oneP * 25,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Icon(Icons.download_rounded),
+                      SizedBox(
+                        height: oneP,
+                      ),
+                      Text(
+                        "${app.size}",
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: oneP * 2,
+                  child: VerticalDivider(
+                    color: Colors.white,
+                  ),
+                ),
+                Container(
+                  width: oneP * 12,
+                  height: oneP * 25,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Icon(
+                        Icons.android_outlined, //version
+                        color: Colors.green,
+                      ),
+                      SizedBox(
+                        height: oneP,
+                      ),
+                      Text(
+                        "${app.verNumber}",
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: oneP * 2,
+                ),
+                Container(
+                  width: oneP * 25,
+                  height: oneP * 25,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        "${app.installs}",
+                      ),
+                      SizedBox(
+                        height: oneP,
+                      ),
+                      Text(
+                        "Dl",
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: oneP * 7,
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

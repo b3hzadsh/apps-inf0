@@ -1,21 +1,54 @@
 import 'package:flutter/cupertino.dart';
+import 'dart:convert';
+
+AppModel appModelFromJson(String str) {
+  final jsonData = json.decode(str);
+  return AppModel.fromMap(jsonData);
+}
+
+String appModelToJson(AppModel data) {
+  final dyn = data.toMap();
+  return json.encode(dyn);
+}
 
 class AppModel {
   final String appName; //App
-  final String verNumber;
+  final String verNumber; //android req
   final String size; //
-  final String downloads;
+  final String installs;
   final double ratting; //
-  final String price;
-  final int review;
-  AppModel(
-      {@required this.appName,
-      @required this.verNumber,
-      @required this.size,
-      @required this.downloads,
-      @required this.ratting,
-      @required this.price,
-      @required this.review});
+  final String price; // 0 or 4.5 $
+  final int review; //+
+  AppModel({
+    @required this.appName,
+    @required this.verNumber,
+    @required this.size,
+    @required this.installs,
+    @required this.ratting,
+    @required this.price,
+    @required this.review,
+  });
+
+  Map<String, dynamic> toMap() => {
+        "app_name": appName,
+        "ver_number": verNumber,
+        "size": size,
+        "installs": installs,
+        "ratting": ratting,
+        "price": price,
+        "review": review,
+      };
+  factory AppModel.fromMap(Map<String, dynamic> json) => new AppModel(
+        appName: json["app_name"],
+        verNumber: json["ver_number"],
+        size: json["size"],
+        installs: json["installs"],
+        ratting: double.parse(json["ratting"]),
+        price: json["price"],
+        review: json["review"],
+
+        // lastName: json["last_name"],
+      );
 }
 
 /*
