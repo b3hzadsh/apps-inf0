@@ -1,4 +1,4 @@
-import 'package:apps_info/screens/art_cat_screen.dart';
+import 'package:apps_info/screens/cat_screen.dart';
 import 'package:apps_info/screens/category.dart';
 import 'package:apps_info/screens/home.dart';
 import 'package:apps_info/screens/search.dart';
@@ -35,16 +35,19 @@ class MyApp extends StatelessWidget {
             builder: (context) => CategoryScreen(),
             // bring home
           );
-        if (setting.name == "/cat/ART AND DESIGN") // for home
-          return MaterialPageRoute(
-            builder: (context) => ArtScreen(),
-            // bring home
-          );
+
         if (setting.name == "/screen/Setting") // for home
           return MaterialPageRoute(
             builder: (context) => SettingScreen(),
             // bring home
           );
+        // for home
+        return MaterialPageRoute(
+          builder: (context) => CatScreen(
+            catName: setting.name.substring(5),
+          ),
+          // bring home
+        );
       },
       /* theme: ThemeData(
         brightness: Brightness.light,

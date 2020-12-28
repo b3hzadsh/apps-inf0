@@ -16,7 +16,8 @@ class AppModel {
   final String verNumber; //android req
   final String size; //
   final String installs;
-  final double ratting; //
+  final dynamic ratting;
+  //final dynamic ratingTemp ;
   final String price; // 0 or 4.5 $
   final int review; //+
   AppModel({
@@ -27,6 +28,7 @@ class AppModel {
     @required this.ratting,
     @required this.price,
     @required this.review,
+    //@required this.ratingTemp,
   });
 
   Map<String, dynamic> toMap() => {

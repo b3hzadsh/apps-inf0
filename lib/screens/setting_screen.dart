@@ -35,14 +35,12 @@ class _SettingScreenState extends State<SettingScreen> {
                   title: "Download dataset",
                   icon: Icons.download_rounded,
                   myfunc: () async {
-                    DBProvider.db.deleteAllTables();
+                    await DBProvider.db.deleteAllTables();
                     List x;
                     //if for check thats for first time
-                    String url =
-                        "https://api.jsonbin.io/b/5fe6de6f6c160b7b70d98be1";
 
                     String giturl =
-                        "https://raw.githubusercontent.com/b3hzadsh/json/master/small_dataset.json";
+                        "https://raw.githubusercontent.com/b3hzadsh/json/master/1.json";
                     try {
                       http.Response res = await http.get(giturl);
                       x = json.decode(res.body);
@@ -56,7 +54,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       var verTemp = remEnd(x[i]["Android Ver"]);
                       AppModel newApp = new AppModel(
                         appName: x[i]["App"],
-                        ratting: x[i]["Rating"],
+                        ratting: "${x[i]["Rating"]}",
                         review: x[i]["Reviews"],
                         size: x[i]["Size"],
                         installs: x[i]
@@ -65,7 +63,7 @@ class _SettingScreenState extends State<SettingScreen> {
                             "${x[i]["Price"]}", // change to X $ , it may have $
                         verNumber: "$verTemp",
                       );
-                      DBProvider.db.addApp(newApp, x[i]["Category"]);
+                      await DBProvider.db.addApp(newApp, x[i]["Category"]);
                     }
                     setState(() {});
 
