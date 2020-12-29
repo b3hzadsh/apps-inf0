@@ -46,10 +46,7 @@ class CategoryScreen extends StatelessWidget {
       // backgroundColor: Colors.blueGrey[300],
       appBar: AppBar(
         elevation: 0.0,
-        title: Hero(
-          child: Text("Category"),
-          tag: "CatHero",
-        ),
+        title: Text("Category"),
       ),
       body: MyBlurBg(
         child: Padding(

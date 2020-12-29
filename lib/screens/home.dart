@@ -50,16 +50,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         spacing: 2 / 100 * width,
                         direction: Axis.horizontal,
                         children: [
-                          Hero(
-                            tag: "CatHero",
-                            child: MainButton(
-                                title: "Category", icon: Icons.category),
-                          ),
+                          MainButton(title: "Category", icon: Icons.category),
                           MainButton(title: "Favorites", icon: Icons.favorite),
                           MainButton(title: "Search", icon: Icons.search),
                           MainButton(title: "Setting", icon: Icons.settings),
                           MainButton(title: "About", icon: Icons.info),
-                          MainButton(title: "Exit", icon: Icons.exit_to_app),
+                          MainButton(
+                              title: "Exit",
+                              icon: Icons.exit_to_app,
+                              needRout: false),
                         ],
                       ),
                     ),

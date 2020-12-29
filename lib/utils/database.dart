@@ -147,5 +147,6 @@ class DBProvider {
     "PARENTING",
     "TRAVEL_AND_LOCAL",
     "WEATHER",
+    "Favorite"
   ];
 }

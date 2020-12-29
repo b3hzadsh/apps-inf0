@@ -42,3 +42,12 @@ String sumrize(int k) {
 
   return resStr + " " + resZarib;
 }
+
+String shortener(String input) {
+  int lenght = input.length;
+  if (lenght > 6) {
+    return input.split(" ")[0];
+  } else {
+    return input.split("M")[0] + "M";
+  }
+}

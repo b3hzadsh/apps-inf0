@@ -140,6 +140,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // var hieght = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    app.size.substring(0, 3);
     var oneP = width / 100;
     return Container(
       // margin: EdgeInsets.all(10),
@@ -222,7 +223,7 @@ class AppWidget extends StatelessWidget {
                         height: oneP,
                       ),
                       Text(
-                        "${app.size}",
+                        "${shortener(app.size)}",
                       )
                     ],
                   ),
