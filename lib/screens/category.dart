@@ -41,6 +41,7 @@ class CategoryScreen extends StatelessWidget {
       "TRAVEL_AND_LOCAL",
       "WEATHER",
     ];
+    cats.sort(); //..sort((a, b) => a.substring(0, 1).compareTo(b.substring(0, 1)));
     return Scaffold(
       // backgroundColor: Colors.blueGrey[300],
       appBar: AppBar(

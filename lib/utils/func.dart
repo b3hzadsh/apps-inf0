@@ -5,10 +5,13 @@ String remEnd(String andVer) {
 
 String sumrize(int k) {
   String temp = k.toString();
+  if (temp.length < 3) return temp;
+
   String resZarib;
   var mainNum = temp.length % 3;
   var resStr =
-      (mainNum == 0) ? temp.substring(0, 2) : temp.substring(0, mainNum - 1);
+      (mainNum == 0) ? temp.substring(0, 2) : temp.substring(0, mainNum);
+
   if (temp.length < 4) resStr = temp;
 
   // temp.substring(0, mainNum - 1);
@@ -37,5 +40,5 @@ String sumrize(int k) {
     default:
   }
 
-  return "$resStr" + resZarib;
+  return resStr + " " + resZarib;
 }

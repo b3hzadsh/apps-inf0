@@ -42,9 +42,9 @@ class MyBlurBg extends StatelessWidget {
 }
 
 class MainButton extends StatelessWidget {
-  const MainButton({
+  MainButton({
     Key key,
-    this.myfunc,
+    // this.myfunc,
     this.needRout,
     @required this.title,
     @required this.icon,
@@ -52,13 +52,13 @@ class MainButton extends StatelessWidget {
 
   final String title;
   final IconData icon;
-  final Function myfunc;
+  //final Function myfunc;
   final bool needRout;
 
   @override
   Widget build(BuildContext context) {
     final hieght = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    //final width = MediaQuery.of(context).size.width;
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -98,7 +98,7 @@ class MainButton extends StatelessWidget {
               if (needRout != false)
                 Navigator.pushNamed(context, "/screen/$title");
 
-              myfunc();
+              // myfunc();
             },
             child: Container(
               width: double.infinity,
@@ -131,7 +131,7 @@ class AppWidget extends StatelessWidget {
 
   final AppModel app;
 
-  const AppWidget({
+  AppWidget({
     @required this.app,
     Key key,
   }) : super(key: key);

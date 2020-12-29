@@ -16,7 +16,7 @@ class AppModel {
   final String verNumber; //android req
   final String size; //
   final String installs;
-  final dynamic ratting;
+  final String ratting; //int double string
   //final dynamic ratingTemp ;
   final String price; // 0 or 4.5 $
   final int review; //+
@@ -45,7 +45,7 @@ class AppModel {
         verNumber: json["ver_number"],
         size: json["size"],
         installs: json["installs"],
-        ratting: double.parse(json["ratting"]),
+        ratting: (json["ratting"] != "NaN") ? "${json["ratting"]}" : "unknown",
         price: json["price"],
         review: json["review"],
 

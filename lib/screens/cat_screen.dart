@@ -30,16 +30,18 @@ class _CatScreenState extends State<CatScreen> {
                 return ListView.builder(
                   addAutomaticKeepAlives: true, // important to pass heap memory
                   primary: true,
-                  itemCount: snapshot.data.length - 1,
+                  itemCount: snapshot.data.length,
                   itemBuilder: (BuildContext context, int index) {
+                    var v = snapshot.data[index];
                     AppModel theApp = AppModel(
-                      appName: snapshot.data[index].appName,
-                      ratting: snapshot.data[index].ratting,
-                      review: snapshot.data[index].review,
-                      size: snapshot.data[index].size,
-                      installs: snapshot.data[index].installs,
-                      price: snapshot.data[index].price,
-                      verNumber: snapshot.data[index].verNumber,
+                      appName: v.appName,
+                      ratting: (v.ratting == "0.0") ? "unknown" : v.ratting,
+                      review: v.review,
+                      size: v.size,
+                      installs: v.installs,
+                      price: v.price,
+                      //price: v.price,
+                      verNumber: v.verNumber,
                     );
                     /* AppModel theApp = appModelFromJson(
                       appModelToJson(
