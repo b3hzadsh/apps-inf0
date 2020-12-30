@@ -3,10 +3,10 @@ import 'package:apps_info/utils/func.dart';
 import 'package:apps_info/utils/widgets.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart'
+    show SpinKitPouringHourglass;
+import 'dart:convert' show json;
+import 'package:http/http.dart' as http show Response, get;
 import '../utils/database.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -18,9 +18,6 @@ class _SettingScreenState extends State<SettingScreen> {
   String title = "setting";
   @override
   void dispose() {
-    //
-    Loader.hide();
-
     super.dispose();
   }
 
@@ -58,7 +55,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                     //new CircularProgressIndicator(),
                                     SpinKitPouringHourglass(
                                       color: Colors.white,
-                                      size: 50.0,
+                                      size: width / 3, //50.0
                                     )
                                   ],
                                 ),
@@ -101,9 +98,6 @@ class _SettingScreenState extends State<SettingScreen> {
                               await DBProvider.db
                                   .addApp(newApp, x[i]["Category"]);
                             }
-
-                            ////
-                            ///
                           }
                           Navigator.of(context).pop();
                           showDialog(
@@ -141,11 +135,19 @@ class _SettingScreenState extends State<SettingScreen> {
                                     Icons.error,
                                     color: Colors.red,
                                   ),
-                                  Text("error"),
+                                  Text(" error"),
                                 ],
                               ),
                               // backgroundColor: Colors.blue,
-                              content: Text("You are offline"),
+                              content: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    "You are offline",
+                                  ),
+                                ],
+                              ),
                               actions: [
                                 FlatButton(
                                   onPressed: () {

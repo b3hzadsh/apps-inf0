@@ -1,7 +1,9 @@
 import 'package:apps_info/models/app_model.dart';
 import 'package:apps_info/utils/func.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
+import 'dart:ui' as ui show ImageFilter;
+
+import 'database.dart';
 
 class MyBlurBg extends StatelessWidget {
   final Widget child;
@@ -128,6 +130,7 @@ class MainButton extends StatelessWidget {
 
 class AppWidget extends StatelessWidget {
   //add require to vars
+  final bool isFavorite = false;
 
   final AppModel app;
 
@@ -144,141 +147,137 @@ class AppWidget extends StatelessWidget {
     var oneP = width / 100;
     return Container(
       // margin: EdgeInsets.all(10),
-      padding: EdgeInsets.fromLTRB(oneP * 5, oneP * 3, oneP * 5, 1),
+      padding: EdgeInsets.fromLTRB(oneP * 3, oneP * 3, oneP * 3, 1),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            "${app.appName}",
-            style: TextStyle(color: Colors.orange),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "${shortenerName(app.appName)}",
+                style: TextStyle(color: Colors.orange),
 
-            //size big with factor
+                //size big with factor
+              ),
+              IconButton(
+                onPressed: () async {
+                  var appList = await DBProvider.db.getAllClients("Favorites");
+                  if (!appList.contains(app)) {
+                    await DBProvider.db.addApp(app, "Favorites");
+                  }
+                },
+                icon: Icon(Icons.favorite),
+              )
+            ],
           ),
           Divider(
             color: Colors.transparent,
           ),
-
-          /*  Text(
-            "version : ${app.verNumber}",
-            style: GoogleFonts.lato(
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-          Text(
-            "size : ${app.size}",
-            style: GoogleFonts.lato(
-              fontWeight: FontWeight.w300,
-            ),
-          ), */
-
           //size big with factor
-
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  height: oneP * 25,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "${app.ratting}",
-                          ),
-                          SizedBox(
-                            width: oneP,
-                          ),
-                          Icon(
-                            Icons.star_rate,
-                            color: Colors.yellow,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: oneP,
-                      ),
-                      Text(
-                        "${sumrize(app.review)}" +
-                            " review", //TODO review var in app model
-                      )
-                    ],
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                height: oneP * 25,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "${app.ratting}",
+                        ),
+                        SizedBox(
+                          width: oneP,
+                        ),
+                        Icon(
+                          Icons.star_rate,
+                          color: Colors.yellow,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: oneP,
+                    ),
+                    Text(
+                      "${sumrize(app.review)}" +
+                          " review", //TODO review var in app model
+                    )
+                  ],
                 ),
-                VerticalDivider(
+              ),
+              VerticalDivider(
+                color: Colors.white,
+              ),
+              Container(
+                width: oneP * 15,
+                height: oneP * 25,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(Icons.download_rounded),
+                    SizedBox(
+                      height: oneP,
+                    ),
+                    Text(
+                      "${shortener(app.size)}",
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: oneP * 1,
+                child: VerticalDivider(
                   color: Colors.white,
                 ),
-                Container(
-                  width: oneP * 18,
-                  height: oneP * 25,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Icon(Icons.download_rounded),
-                      SizedBox(
-                        height: oneP,
-                      ),
-                      Text(
-                        "${shortener(app.size)}",
-                      )
-                    ],
-                  ),
+              ),
+              Container(
+                width: oneP * 13,
+                height: oneP * 25,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(
+                      Icons.android_outlined, //version
+                      color: Colors.green,
+                    ),
+                    SizedBox(
+                      height: oneP,
+                    ),
+                    Text(
+                      "${app.verNumber}",
+                    )
+                  ],
                 ),
-                SizedBox(
-                  width: oneP * 2,
-                  child: VerticalDivider(
-                    color: Colors.white,
-                  ),
+              ),
+              SizedBox(
+                width: oneP * 1,
+              ),
+              Container(
+                width: oneP * 23,
+                height: oneP * 25,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "${app.installs}",
+                    ),
+                    SizedBox(
+                      height: oneP,
+                    ),
+                    Text(
+                      "Dl",
+                    )
+                  ],
                 ),
-                Container(
-                  width: oneP * 12,
-                  height: oneP * 25,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Icon(
-                        Icons.android_outlined, //version
-                        color: Colors.green,
-                      ),
-                      SizedBox(
-                        height: oneP,
-                      ),
-                      Text(
-                        "${app.verNumber}",
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: oneP * 2,
-                ),
-                Container(
-                  width: oneP * 25,
-                  height: oneP * 25,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "${app.installs}",
-                      ),
-                      SizedBox(
-                        height: oneP,
-                      ),
-                      Text(
-                        "Dl",
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: oneP * 7,
-                ),
-              ],
-            ),
+              ),
+              SizedBox(
+                width: oneP * 3,
+              ),
+            ],
           ),
         ],
       ),

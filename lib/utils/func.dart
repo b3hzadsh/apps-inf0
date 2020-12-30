@@ -51,3 +51,14 @@ String shortener(String input) {
     return input.split("M")[0] + "M";
   }
 }
+
+String shortenerName(String input) {
+  if (input.split("-")[0].length < 20)
+    return input.split("-")[0];
+  else
+    return input.split(" ")[0] +
+        " " +
+        input.split(" ")[1] +
+        " " +
+        input.split(" ")[2];
+}

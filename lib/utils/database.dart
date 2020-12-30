@@ -24,7 +24,7 @@ class DBProvider {
     String path = join(documentsDirectory.path, "TestDB.db");
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
-      bool xBool = true;
+      // bool xBool = true;
       //REAL
 
       for (int i = 0; i < cats.length; i++) {
@@ -40,10 +40,10 @@ class DBProvider {
             ")");
       }
 
-      await db.execute("CREATE TABLE if not exists favorite ("
-          "id INTEGER PRIMARY KEY,"
-          "cat TEXT" // tablename
-          ")");
+      // await db.execute("CREATE TABLE if not exists favorite ("
+      //     "id INTEGER PRIMARY KEY,"
+      //     "cat TEXT" // tablename
+      //     ")");
     });
   }
 
@@ -52,6 +52,10 @@ class DBProvider {
     //get the biggest id in the table
     var table = await db.rawQuery("SELECT MAX(id)+1 as id FROM $tableName");
     int id = table.first["id"];
+    /* var appList = await DBProvider.db.getAllClients(tableName);
+    if ( ! appList.contains(newClient)){
+
+    } */
     //insert to the table using the new id
     var raw = await db.rawInsert(
         "INSERT Into $tableName (id,app_name,ver_number,size,installs,ratting,price,review)"
@@ -89,6 +93,11 @@ class DBProvider {
   deleteClient(int id, String tableName) async {
     final db = await database;
     return db.delete(tableName, where: "id = ?", whereArgs: [id]);
+  }
+
+  deleteApp(String appName, String tableName) async {
+    final db = await database;
+    return db.delete(tableName, where: "app_name = ?", whereArgs: [appName]);
   }
 
 // use in favorite
@@ -147,6 +156,6 @@ class DBProvider {
     "PARENTING",
     "TRAVEL_AND_LOCAL",
     "WEATHER",
-    "Favorite"
+    "Favorites"
   ];
 }

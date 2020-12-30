@@ -1,5 +1,6 @@
 import 'package:apps_info/screens/cat_screen.dart';
 import 'package:apps_info/screens/category.dart';
+import 'package:apps_info/screens/favorite_screen.dart';
 import 'package:apps_info/screens/home.dart';
 import 'package:apps_info/screens/search.dart';
 import 'package:apps_info/screens/setting_screen.dart';
@@ -33,6 +34,11 @@ class MyApp extends StatelessWidget {
         if (setting.name == "/screen/Category") // for home
           return MaterialPageRoute(
             builder: (context) => CategoryScreen(),
+            // bring home
+          );
+        if (setting.name == "/screen/Favorites") // for home
+          return MaterialPageRoute(
+            builder: (context) => FavoriteScreen(),
             // bring home
           );
 
