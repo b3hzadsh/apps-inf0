@@ -67,7 +67,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                       key: Key(theApp.appName),
                       child: Column(
                         children: [
-                          AppWidget(app: theApp),
+                          AppWidget(
+                            app: theApp,
+                            isFavorite: true,
+                          ),
                           Divider(),
                         ],
                       ),

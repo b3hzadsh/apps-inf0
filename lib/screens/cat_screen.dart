@@ -50,7 +50,10 @@ class _CatScreenState extends State<CatScreen> {
                     ); */
                     return Column(
                       children: [
-                        AppWidget(app: theApp),
+                        AppWidget(
+                          app: theApp,
+                          isFavorite: false,
+                        ),
                         Divider(),
                       ],
                     );

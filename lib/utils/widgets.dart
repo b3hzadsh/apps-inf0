@@ -128,22 +128,32 @@ class MainButton extends StatelessWidget {
   }
 }
 
-class AppWidget extends StatelessWidget {
+class AppWidget extends StatefulWidget {
   //add require to vars
-  final bool isFavorite = false;
+  final bool isFavorite;
 
   final AppModel app;
 
-  AppWidget({
-    @required this.app,
-    Key key,
-  }) : super(key: key);
+  const AppWidget({Key key, this.isFavorite, this.app}) : super(key: key);
+
+  @override
+  _AppWidgetState createState() => _AppWidgetState();
+}
+
+class _AppWidgetState extends State<AppWidget> {
+  bool tempIsFavorite;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    tempIsFavorite = widget.isFavorite;
+  }
 
   @override
   Widget build(BuildContext context) {
     // var hieght = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    app.size.substring(0, 3);
+    widget.app.size.substring(0, 3);
     var oneP = width / 100;
     return Container(
       // margin: EdgeInsets.all(10),
@@ -156,19 +166,32 @@ class AppWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "${shortenerName(app.appName)}",
+                "${shortenerName(widget.app.appName)}",
                 style: TextStyle(color: Colors.orange),
 
                 //size big with factor
               ),
               IconButton(
                 onPressed: () async {
+                  tempIsFavorite = !tempIsFavorite;
                   var appList = await DBProvider.db.getAllClients("Favorites");
-                  if (!appList.contains(app)) {
-                    await DBProvider.db.addApp(app, "Favorites");
+                  if (tempIsFavorite == true) {
+                    if (!appList.contains(widget.app)) {
+                      await DBProvider.db.addApp(widget.app, "Favorites");
+                    }
+                  } else if (tempIsFavorite == false) {
+                    await DBProvider.db
+                        .deleteApp(widget.app.appName, "Favorites");
                   }
+
+                  setState(() {});
                 },
-                icon: Icon(Icons.favorite),
+                icon: Icon(
+                  Icons.favorite,
+                  color: tempIsFavorite
+                      ? Color.fromRGBO(255, 200, 0, 1)
+                      : Colors.grey,
+                ),
               )
             ],
           ),
@@ -188,7 +211,7 @@ class AppWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "${app.ratting}",
+                          "${widget.app.ratting}",
                         ),
                         SizedBox(
                           width: oneP,
@@ -203,7 +226,7 @@ class AppWidget extends StatelessWidget {
                       height: oneP,
                     ),
                     Text(
-                      "${sumrize(app.review)}" +
+                      "${sumrize(widget.app.review)}" +
                           " review", //TODO review var in app model
                     )
                   ],
@@ -223,7 +246,7 @@ class AppWidget extends StatelessWidget {
                       height: oneP,
                     ),
                     Text(
-                      "${shortener(app.size)}",
+                      "${shortener(widget.app.size)}",
                     )
                   ],
                 ),
@@ -248,7 +271,7 @@ class AppWidget extends StatelessWidget {
                       height: oneP,
                     ),
                     Text(
-                      "${app.verNumber}",
+                      "${widget.app.verNumber}",
                     )
                   ],
                 ),
@@ -263,7 +286,7 @@ class AppWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      "${app.installs}",
+                      "${widget.app.installs}",
                     ),
                     SizedBox(
                       height: oneP,

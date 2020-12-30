@@ -32,6 +32,7 @@ class _SettingScreenState extends State<SettingScreen> {
         body: MyBlurBg(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 20),
@@ -159,10 +160,6 @@ class _SettingScreenState extends State<SettingScreen> {
                             ),
                           );
                         }
-
-                        //Loader.hide();
-
-                        // list of map
                       },
                       child: Text("Download dataset")
                       /* MainButton(
