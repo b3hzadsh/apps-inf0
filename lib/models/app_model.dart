@@ -12,6 +12,7 @@ String appModelToJson(AppModel data) {
 }
 
 class AppModel {
+  //bool isFavorite;
   final String appName; //App
   final String verNumber; //android req
   final String size; //
@@ -28,6 +29,7 @@ class AppModel {
     @required this.ratting,
     @required this.price,
     @required this.review,
+    // this.isFavorite
     //@required this.ratingTemp,
   });
 
@@ -39,6 +41,7 @@ class AppModel {
         "ratting": ratting,
         "price": price,
         "review": review,
+        // "isFavorite": isFavorite,
       };
   factory AppModel.fromMap(Map<String, dynamic> json) => new AppModel(
         appName: json["app_name"],
@@ -48,6 +51,7 @@ class AppModel {
         ratting: (json["ratting"] != "NaN") ? "${json["ratting"]}" : "unknown",
         price: json["price"],
         review: json["review"],
+        // isFavorite: json["isFavorite"] == 1,
 
         // lastName: json["last_name"],
       );

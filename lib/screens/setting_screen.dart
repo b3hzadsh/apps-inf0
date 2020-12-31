@@ -95,6 +95,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                 price:
                                     "${x[i]["Price"]}", // change to X $ , it may have $
                                 verNumber: "$verTemp",
+                                //isFavorite: false,
                               );
                               await DBProvider.db
                                   .addApp(newApp, x[i]["Category"]);

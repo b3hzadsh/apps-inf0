@@ -156,6 +156,7 @@ class _AppWidgetState extends State<AppWidget> {
     widget.app.size.substring(0, 3);
     var oneP = width / 100;
     return Container(
+      //color: Theme.of(context).primaryColorDark,
       // margin: EdgeInsets.all(10),
       padding: EdgeInsets.fromLTRB(oneP * 3, oneP * 3, oneP * 3, 1),
       child: Column(

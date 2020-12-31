@@ -4,6 +4,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import '../models/app_model.dart';
 import 'package:sqflite/sqflite.dart';
+import 'dart:core';
 
 class DBProvider {
   DBProvider._();
@@ -37,6 +38,7 @@ class DBProvider {
             "ratting TEXT," //or FLOAT
             "price TEXT," // 0 OR X$ x is float
             "review INTEGER"
+            // "isFavorite BIT"
             ")");
       }
 
@@ -58,7 +60,7 @@ class DBProvider {
     } */
     //insert to the table using the new id
     var raw = await db.rawInsert(
-        "INSERT Into $tableName (id,app_name,ver_number,size,installs,ratting,price,review)"
+        "INSERT Into $tableName (id,app_name,ver_number,size,installs,ratting,price,review)" //,isFavorite
         " VALUES (?,?,?,?,?,?,?,?)",
         [
           id,
@@ -69,6 +71,7 @@ class DBProvider {
           newClient.ratting,
           newClient.price,
           newClient.review,
+          //newClient.isFavorite,
         ]);
     return raw;
   }
@@ -79,6 +82,23 @@ class DBProvider {
     final db = await database;
     var res = await db.query(tableName, where: "id = ?", whereArgs: [id]);
     return res.isNotEmpty ? AppModel.fromMap(res.first) : null;
+  }
+
+  Future<List<AppModel>> searchApp(String title) async {
+    var dbClient = await database;
+    List<AppModel> x = [];
+
+    for (int i = 0; i < cats.length - 1; i++) {
+      var result = await dbClient.rawQuery(
+          " select * from ${cats[i]} WHERE app_name LIKE '%$title%' ");
+      if (result.length > 0)
+        result.forEach((element) {
+          x.add(AppModel.fromMap(element));
+        }); //x.add(AppModel.fromMap(result.first));
+    }
+    return x;
+
+    /* return null; */
   }
 
   Future<List<AppModel>> getAllClients(String tableName) async {
