@@ -12,6 +12,7 @@ class CategoryScreen extends StatelessWidget {
       "FAMILY",
       "TOOLS",
       "NEWS_AND_MAGAZINES",
+      "PHOTOGRAPHY",
       "BUSINESS",
       "PRODUCTIVITY",
       "GAME",
@@ -71,7 +72,7 @@ class CategoryScreen extends StatelessWidget {
                               child: Text(
                                 cats[index].replaceAll("_", " "),
                                 style: TextStyle(
-                                    color: Colors.grey[200], fontSize: 20),
+                                    color: Color(0xFFD5DFE5), fontSize: 20),
                               ),
                             ),
                             Icon(Icons.arrow_forward_ios)

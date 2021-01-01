@@ -156,6 +156,7 @@ class DBProvider {
     "HEALTH_AND_FITNESS",
     "BEAUTY",
     "VIDEO_PLAYERS",
+    "PHOTOGRAPHY",
     "MUSIC",
     "COMMUNICATION",
     "PERSONALIZATION",

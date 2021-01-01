@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           MainButton(title: "About", icon: Icons.info),
                           MainButton(
                               title: "Exit",
-                              icon: Icons.exit_to_app,
+                              icon: Icons.exit_to_app_rounded,
                               needRout: false),
                         ],
                       ),

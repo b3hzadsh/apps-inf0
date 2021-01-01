@@ -1,7 +1,10 @@
 import 'package:apps_info/models/app_model.dart';
 import 'package:apps_info/utils/func.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show SystemNavigator;
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'dart:ui' as ui show ImageFilter;
+import 'package:url_launcher/url_launcher.dart';
 
 import 'database.dart';
 
@@ -96,9 +99,21 @@ class MainButton extends StatelessWidget {
         width: double.infinity,
         child: Center(
           child: FlatButton(
-            onPressed: () {
-              if (needRout != false)
+            onPressed: () async {
+              if (title == "Exit") {
+                SystemNavigator.pop(); //https://github.com/b3hzadsh/apps-inf0
+              }
+              if (needRout != false && title != "Exit" && title != "About")
                 Navigator.pushNamed(context, "/screen/$title");
+
+              if (title == "About") {
+                const url = 'https://github.com/b3hzadsh/apps-inf0';
+                if (await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              }
 
               // myfunc();
             },
@@ -167,8 +182,12 @@ class _AppWidgetState extends State<AppWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "${shortenerName(widget.app.appName)}",
-                style: TextStyle(color: Colors.orange),
+                "${MyFunctions.shortenerName(widget.app.appName)}",
+                style: TextStyle(
+                  color: Color(
+                    0xFF25A18E,
+                  ),
+                ), //0xFF7D70BA | 0xFF0DAB76
 
                 //size big with factor
               ),
@@ -189,9 +208,7 @@ class _AppWidgetState extends State<AppWidget> {
                 },
                 icon: Icon(
                   Icons.favorite,
-                  color: tempIsFavorite
-                      ? Color.fromRGBO(255, 200, 0, 1)
-                      : Colors.grey,
+                  color: tempIsFavorite ? Colors.orange : Colors.grey,
                 ),
               )
             ],
@@ -208,8 +225,9 @@ class _AppWidgetState extends State<AppWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Row(
+                    /* Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
+                      //mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "${widget.app.ratting}",
@@ -225,9 +243,16 @@ class _AppWidgetState extends State<AppWidget> {
                     ),
                     SizedBox(
                       height: oneP,
+                    ), */
+                    Icon(
+                      Icons.comment_outlined,
+                      color: Colors.lightBlue,
+                    ),
+                    SizedBox(
+                      height: oneP,
                     ),
                     Text(
-                      "${sumrize(widget.app.review)}" +
+                      "${MyFunctions.sumrize(widget.app.review)}" +
                           " review", //TODO review var in app model
                     )
                   ],
@@ -242,12 +267,15 @@ class _AppWidgetState extends State<AppWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Icon(Icons.download_rounded),
+                    Icon(
+                      Icons.download_rounded,
+                      color: Colors.grey,
+                    ),
                     SizedBox(
                       height: oneP,
                     ),
                     Text(
-                      "${shortener(widget.app.size)}",
+                      "${MyFunctions.shortener(widget.app.size)}",
                     )
                   ],
                 ),
@@ -288,12 +316,13 @@ class _AppWidgetState extends State<AppWidget> {
                   children: [
                     Text(
                       "${widget.app.installs}",
+                      style: TextStyle(color: Color(0xFFD5DFE5)),
                     ),
                     SizedBox(
                       height: oneP,
                     ),
                     Text(
-                      "Dl",
+                      "Downloads",
                     )
                   ],
                 ),
@@ -302,6 +331,18 @@ class _AppWidgetState extends State<AppWidget> {
                 width: oneP * 3,
               ),
             ],
+          ),
+          Center(
+            child: RatingBarIndicator(
+              rating: double.parse(widget.app.ratting),
+              itemBuilder: (context, index) => Icon(
+                Icons.star,
+                color: Colors.amber,
+              ),
+              itemCount: 5,
+              itemSize: 50.0,
+              direction: Axis.horizontal,
+            ),
           ),
         ],
       ),

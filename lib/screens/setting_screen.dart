@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:apps_info/models/app_model.dart';
 import 'package:apps_info/utils/func.dart';
 import 'package:apps_info/utils/widgets.dart';
@@ -66,10 +68,12 @@ class _SettingScreenState extends State<SettingScreen> {
                           await DBProvider.db.deleteAllTables();
                           List x; //<Map<String, dynamic>>
                           //if for check thats for first time
-                          for (int j = 1; j <= 3; j++) {
+                          for (int j = 1; j <= 2; j++) {
+                            Future.delayed(
+                                const Duration(milliseconds: 200), () => "1");
                             // change 395
                             String splitGitUrl =
-                                "https://raw.githubusercontent.com/b3hzadsh/json/master/split/dataset_$j.json";
+                                "https://raw.githubusercontent.com/b3hzadsh/json/master/splited/dataset_$j.json";
                             try {
                               http.Response res = await http.get(splitGitUrl);
                               x = json.decode(res.body);
@@ -82,7 +86,8 @@ class _SettingScreenState extends State<SettingScreen> {
                             //var xlen = x.length ~/ 100;
                             //for (int j = 0; j < 99 * xlen; j += xlen) {
                             for (int i = 0; i < x.length - 1; i++) {
-                              var verTemp = remEnd(x[i]["Android Ver"]);
+                              var verTemp =
+                                  MyFunctions.remEnd(x[i]["Android Ver"]);
                               AppModel newApp = AppModel(
                                 appName: x[i]["App"],
                                 ratting: ((x[i]["Rating"]) != "NaN")
