@@ -2,19 +2,13 @@
 
 # apps info
 
-[![Stars](https://img.shields.io/github/stars/urmilshroff/goalkeeper.svg)](https://github.com/urmilshroff/goalkeeper/stargazers)
-[![Forks](https://img.shields.io/github/forks/urmilshroff/goalkeeper.svg)](https://github.com/urmilshroff/goalkeeper/network/members)
-[![Codemagic build status](https://api.codemagic.io/apps/5def9463df9d103dc7907c20/5def9463df9d103dc7907c1f/status_badge.svg)](https://codemagic.io/apps/5def9463df9d103dc7907c20/5def9463df9d103dc7907c1f/latest_build)
-[![Issues](https://img.shields.io/github/issues/urmilshroff/goalkeeper.svg)](https://github.com/urmilshroff/goalkeeper/issues)
-[![License](https://img.shields.io/github/license/urmilshroff/goalkeeper.svg)](https://opensource.org/licenses/MIT)
-
 A neat, nice looking Flutter app to visualize a dataset ! It can be built for iOS and Android .
 
 
 
 ## Screenshots
 
-<p><img height="306px" width="170px" src="./assets/screen_shots/categories.png" alt="apps info"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/2.png" alt="apps info"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/3.png" alt="apps info"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/4.png" alt="apps info"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/5.png" alt="apps info"/></p>
+<p><img height="306px" width="170px" src="./assets/screen_shots/categories.png" alt="apps info"/> <img height="306px" width="170px" src="./assets/screen_shots/a-category.png" alt="apps info"/> <img height="306px" width="170px" src="./assets/screen_shots/favorite.png" alt="apps info"/> <img height="306px" width="170px" src="./assets/screen_shots/main.png" alt="apps info"/> <img height="306px" width="170px" src="./assets/screen_shots/search.png" alt="apps info"/></p>
 
 ## Building
 
