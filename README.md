@@ -14,7 +14,7 @@ A neat, nice looking Flutter app to visualize a dataset ! It can be built for iO
 
 ## Screenshots
 
-<p><img height="306px" width="170px" src="./branding/screener/pixel-xl/1.png" alt="Goalkeeper"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/2.png" alt="Goalkeeper"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/3.png" alt="Goalkeeper"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/4.png" alt="Goalkeeper"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/5.png" alt="Goalkeeper"/></p>
+<p><img height="306px" width="170px" src="./assets/screen_shots/categories.png" alt="apps info"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/2.png" alt="apps info"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/3.png" alt="apps info"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/4.png" alt="apps info"/> <img height="306px" width="170px" src="./branding/screener/pixel-xl/5.png" alt="apps info"/></p>
 
 ## Building
 
