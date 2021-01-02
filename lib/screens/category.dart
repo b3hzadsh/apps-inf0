@@ -1,26 +1,24 @@
 import 'package:apps_info/utils/widgets.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 
 class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var hieght = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     List<String> cats = [
       "ART_AND_DESIGN",
       "FAMILY",
       "TOOLS",
       "NEWS_AND_MAGAZINES",
-      "PHOTOGRAPHY",
       "BUSINESS",
       "PRODUCTIVITY",
       "GAME",
       "LIFESTYLE",
+      "HOUSE_AND_HOME",
       "SHOPPING",
       "HEALTH_AND_FITNESS",
       "BEAUTY",
       "VIDEO_PLAYERS",
+      "PHOTOGRAPHY",
       "MUSIC",
       "COMMUNICATION",
       "PERSONALIZATION",
@@ -41,6 +39,7 @@ class CategoryScreen extends StatelessWidget {
       "PARENTING",
       "TRAVEL_AND_LOCAL",
       "WEATHER",
+      "Favorites"
     ];
     cats.sort(); //..sort((a, b) => a.substring(0, 1).compareTo(b.substring(0, 1)));
     return Scaffold(
@@ -72,7 +71,9 @@ class CategoryScreen extends StatelessWidget {
                               child: Text(
                                 cats[index].replaceAll("_", " "),
                                 style: TextStyle(
-                                    color: Color(0xFFD5DFE5), fontSize: 20),
+                                  color: Color(0xFFD5DFE5),
+                                  fontSize: 20,
+                                ),
                               ),
                             ),
                             Icon(Icons.arrow_forward_ios)

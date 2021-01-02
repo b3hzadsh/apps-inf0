@@ -54,7 +54,7 @@ class MyFunctions {
   }
 
   static String shortenerName(String input) {
-    if (input.length < 40) return input;
+    if (input.length < 35) return input;
     if (input.split("-")[0].length < 20) return input.split("-")[0];
     if (input.split(":")[0].length < 20)
       return input.split(":")[0];

@@ -8,11 +8,11 @@
                               "name": "apps_info",
                               "request": "launch",
                               "type": "dart",
-                              "args": [
+                              /*  "args": [
                                         "--enable-software-rendering",
                                         "-d",
                                         "all",
-                              ],
+                              ], */
                     }
           ]
 }

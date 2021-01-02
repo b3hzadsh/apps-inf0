@@ -185,9 +185,9 @@ class _AppWidgetState extends State<AppWidget> {
                 "${MyFunctions.shortenerName(widget.app.appName)}",
                 style: TextStyle(
                   color: Color(
-                    0xFF25A18E,
+                    0xFFEF6351,
                   ),
-                ), //0xFF7D70BA | 0xFF0DAB76
+                ), //0xFF7D70BA | 0xFF0DAB76 | 0xFF25A18E, |  0xFFF6B503
 
                 //size big with factor
               ),
@@ -208,7 +208,7 @@ class _AppWidgetState extends State<AppWidget> {
                 },
                 icon: Icon(
                   Icons.favorite,
-                  color: tempIsFavorite ? Colors.orange : Colors.grey,
+                  color: tempIsFavorite ? Color(0xFFF6A103) : Colors.grey,
                 ),
               )
             ],

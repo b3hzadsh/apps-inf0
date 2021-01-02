@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:path_provider/path_provider.dart'
+    show getApplicationDocumentsDirectory;
 import '../models/app_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:core';
@@ -152,6 +153,7 @@ class DBProvider {
     "PRODUCTIVITY",
     "GAME",
     "LIFESTYLE",
+    "HOUSE_AND_HOME",
     "SHOPPING",
     "HEALTH_AND_FITNESS",
     "BEAUTY",

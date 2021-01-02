@@ -68,10 +68,10 @@ class _SettingScreenState extends State<SettingScreen> {
                           await DBProvider.db.deleteAllTables();
                           List x; //<Map<String, dynamic>>
                           //if for check thats for first time
-                          for (int j = 1; j <= 2; j++) {
+                          for (int j = 1; j <= 5; j++) {
                             Future.delayed(
-                                const Duration(milliseconds: 200), () => "1");
-                            // change 395
+                                const Duration(milliseconds: 300), () => "1");
+
                             String splitGitUrl =
                                 "https://raw.githubusercontent.com/b3hzadsh/json/master/splited/dataset_$j.json";
                             try {
@@ -79,12 +79,9 @@ class _SettingScreenState extends State<SettingScreen> {
                               x = json.decode(res.body);
 
                               print(x[1]["App"]);
-                              // title = x[1]["App"];
                             } catch (e) {
                               print(e);
                             }
-                            //var xlen = x.length ~/ 100;
-                            //for (int j = 0; j < 99 * xlen; j += xlen) {
                             for (int i = 0; i < x.length - 1; i++) {
                               var verTemp =
                                   MyFunctions.remEnd(x[i]["Android Ver"]);
@@ -95,10 +92,8 @@ class _SettingScreenState extends State<SettingScreen> {
                                     : "0",
                                 review: x[i]["Reviews"],
                                 size: x[i]["Size"],
-                                installs: x[i]
-                                    ["Installs"], //conacat to int :rem + and ,
-                                price:
-                                    "${x[i]["Price"]}", // change to X $ , it may have $
+                                installs: x[i]["Installs"],
+                                price: "${x[i]["Price"]}",
                                 verNumber: "$verTemp",
                                 //isFavorite: false,
                               );
