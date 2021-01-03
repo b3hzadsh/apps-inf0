@@ -44,7 +44,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                     var v = snapshot.data[index];
                     AppModel theApp = AppModel(
                       appName: v.appName,
-                      ratting: (v.ratting == "0.0") ? "unknown" : v.ratting,
+                      ratting: (v.ratting == "0") ? "unknown" : v.ratting,
                       review: v.review,
                       size: v.size,
                       installs: v.installs,

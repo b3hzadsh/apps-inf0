@@ -48,7 +48,7 @@ class AppModel {
         verNumber: json["ver_number"],
         size: json["size"],
         installs: json["installs"],
-        ratting: (json["ratting"] != "NaN") ? "${json["ratting"]}" : "unknown",
+        ratting: (json["ratting"] != "NaN") ? "${json["ratting"]}" : 0,
         price: json["price"],
         review: json["review"],
         // isFavorite: json["isFavorite"] == 1,

@@ -7,7 +7,9 @@ import 'package:apps_info/screens/setting_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -58,33 +60,6 @@ class MyApp extends StatelessWidget {
           // bring home
         );
       },
-      /* theme: ThemeData(
-        brightness: Brightness.light,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: 'B',
-        primarySwatch: Colors.blue,
-        accentColor: Color(0XFFFF4081), //
-        scaffoldBackgroundColor: Color(0XFFC5CAE9),
-        //backgroundColor: Color(0XFFBBDEFB),
-        primaryColor: Color(0XFF448AFF), //
-        primaryColorLight: Color(0XFFFFCDD2), //
-        primaryColorDark: Color(0XFFD32F2F), //
-        dividerColor: Color(0XFFBDBDBD), //
-        primaryTextTheme: TextTheme(
-          headline6: TextStyle(
-            color: Color(0XFF212121), //
-            fontFamily: "C",
-          ),
-          caption: TextStyle(
-            color: Color(0XFF212121),
-          ),
-        ),
-        textTheme: TextTheme(
-          headline1: TextStyle(color: Color(0XFFFFFFFF)),
-          headline6: TextStyle(color: Color(0XFFFFFFFF)),
-          subtitle1: TextStyle(color: Color(0XFF757575)),
-        ),
-      ),*/
     );
   }
 }

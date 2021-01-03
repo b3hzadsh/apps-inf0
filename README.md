@@ -1,4 +1,4 @@
-<p align="center"><img height="180px" width="180px" src="./branding/art/icon.png" alt="Goalkeeper"/></p>
+<p align="center"><img height="180px" width="180px" src="./assets/images/icon.png" alt="apps info"/></p>
 
 # apps info
 

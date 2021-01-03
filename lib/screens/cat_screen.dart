@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class CatScreen extends StatefulWidget {
   final String catName;
 
-  const CatScreen({Key key, this.catName}) : super(key: key);
+  const CatScreen({Key key, @required this.catName}) : super(key: key);
   @override
   _CatScreenState createState() => _CatScreenState();
 }
@@ -35,7 +35,7 @@ class _CatScreenState extends State<CatScreen> {
                     var v = snapshot.data[index];
                     AppModel theApp = AppModel(
                       appName: v.appName,
-                      ratting: (v.ratting == "0.0") ? "unknown" : v.ratting,
+                      ratting: (v.ratting == "0") ? "unknown" : v.ratting,
                       review: v.review,
                       size: v.size,
                       installs: v.installs,
@@ -60,8 +60,9 @@ class _CatScreenState extends State<CatScreen> {
                   },
                 );
               } else {
-                return ListView(
-                  // wrap with future builder
+                return Column(
+                  //c
+
                   children: [
                     Center(
                       child: CircularProgressIndicator(),

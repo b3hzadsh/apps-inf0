@@ -43,7 +43,6 @@ class CategoryScreen extends StatelessWidget {
     ];
     cats.sort(); //..sort((a, b) => a.substring(0, 1).compareTo(b.substring(0, 1)));
     return Scaffold(
-      // backgroundColor: Colors.blueGrey[300],
       appBar: AppBar(
         elevation: 0.0,
         title: Text("Category"),

@@ -144,7 +144,6 @@ class MainButton extends StatelessWidget {
 }
 
 class AppWidget extends StatefulWidget {
-  //add require to vars
   final bool isFavorite;
 
   final AppModel app;
@@ -225,25 +224,6 @@ class _AppWidgetState extends State<AppWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    /* Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      //mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "${widget.app.ratting}",
-                        ),
-                        SizedBox(
-                          width: oneP,
-                        ),
-                        Icon(
-                          Icons.star_rate,
-                          color: Colors.yellow,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: oneP,
-                    ), */
                     Icon(
                       Icons.comment_outlined,
                       color: Colors.lightBlue,
