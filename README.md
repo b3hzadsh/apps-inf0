@@ -1,4 +1,4 @@
-<p align="center"><img height="180px" width="180px" src="./assets/images/icon.png" alt="apps info"/></p>
+<p align="left"><img height="180px" width="180px" src="./assets/images/icon.png" alt="apps info"/></p>
 
 # apps info
 
